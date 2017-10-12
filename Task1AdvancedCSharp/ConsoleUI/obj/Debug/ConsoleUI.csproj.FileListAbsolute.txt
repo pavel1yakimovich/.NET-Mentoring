@@ -1,0 +1,12 @@
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\ConsoleUI.exe.config
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\ConsoleUI.exe
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\ConsoleUI.pdb
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\Task1AdvancedCSharp.dll
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\Task1AdvancedCSharp.pdb
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.csprojResolveAssemblyReference.cache
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.CoreCompileInputs.cache
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.exe
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.pdb
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\System.IO.FileSystem.dll
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\System.IO.FileSystem.Primitives.dll
+E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.ConsoleUI.exe.config
