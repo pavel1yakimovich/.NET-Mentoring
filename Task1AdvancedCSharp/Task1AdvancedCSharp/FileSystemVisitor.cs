@@ -18,17 +18,17 @@ namespace Task1AdvancedCSharp
             FileSystemVisitor.ItemExcluded = true;
         }
 
-        //public void Stop()
-        //{
-        //    FileSystemVisitor.IsStoped = true;
-        //}
+        public void Stop()
+        {
+            FileSystemVisitor.IsStoped = true;
+        }
     }
 
     public class FileSystemVisitor
     {
         public string RootDirectory { get; set; }
         public static bool ItemExcluded = false;
-        //public static bool IsStoped = false;
+        public static bool IsStoped = false;
         private Predicate<string> filter;
 
         #region events
@@ -76,7 +76,7 @@ namespace Task1AdvancedCSharp
         public FileSystemVisitor()
         {
             ItemExcluded = false;
-           // IsStoped = false;
+            IsStoped = false;
         }
         /// <summary>
         /// .ctor with filter delegate
@@ -89,30 +89,34 @@ namespace Task1AdvancedCSharp
 
         public IEnumerator<string> GetEnumerator()
         {
+            if (IsStoped)
+            {
+                goto Finish;
+            }
             OnStart(new FsvArgs());
-            //if (IsStoped)
-            //{
-            //    goto Finish;
-            //}
 
             var directories = Directory.GetDirectories(RootDirectory);
 
             //Searching in directories
             foreach (var dir in directories)
             {
+                if (IsStoped)
+                {
+                    goto Finish;
+                }
                 OnDirectoryFound(new FsvArgs(dir));
-                //if (IsStoped)
-                //{
-                //    goto Finish;
-                //}
+                if (IsStoped)
+                {
+                    goto Finish;
+                }
                 //if the dir is excluded, do not search in this dir
                 if (ReturnItem(dir))
                 {
                     OnFilteredDirectoryFound(new FsvArgs(dir));
-                    //if (IsStoped)
-                    //{
-                    //    goto Finish;
-                    //}
+                    if (IsStoped)
+                    {
+                        goto Finish;
+                    }
 
                     yield return dir;
 
@@ -131,6 +135,10 @@ namespace Task1AdvancedCSharp
                     //Searching in subdirectories
                     foreach (var item in subFsv)
                     {
+                        if (IsStoped)
+                        {
+                            goto Finish;
+                        }
                         yield return item;
                     }
                 }
@@ -142,17 +150,17 @@ namespace Task1AdvancedCSharp
             foreach (var file in files)
             {
                 this.OnFileFound(new FsvArgs(file));
-                //if (IsStoped)
-                //{
-                //    goto Finish;
-                //}
+                if (IsStoped)
+                {
+                    goto Finish;
+                }
                 if (ReturnItem(file))
                 {
                     this.OnFilteredFileFound(new FsvArgs(file));
-                    //if (IsStoped)
-                    //{
-                    //    goto Finish;
-                    //}
+                    if (IsStoped)
+                    {
+                        goto Finish;
+                    }
                     yield return file;
                 }
             }
