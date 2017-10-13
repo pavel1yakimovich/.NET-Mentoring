@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
@@ -12,11 +11,17 @@ namespace Task1AdvancedCSharp
     public class FileSystemVisitor
     {
         public string RootDirectory { get; set; }
-        
         private Predicate<string> filter;
+
+        #region events
 
         public event EventHandler<FsvArgs> SearchStarted;
         public event EventHandler<FsvArgs> SearchFinished;
+
+        public event EventHandler<FsvArgs> FileFound;
+        public event EventHandler<FsvArgs> DirectoryFound;
+        public event EventHandler<FsvArgs> FilteredFileFound;
+        public event EventHandler<FsvArgs> FilteredDirectoryFound;
 
         protected void OnStart(FsvArgs args)
         {
@@ -27,6 +32,28 @@ namespace Task1AdvancedCSharp
         {
             SearchFinished?.Invoke(this, args);
         }
+
+        protected void OnFileFound(FsvArgs args)
+        {
+            FileFound?.Invoke(this, args);
+        }
+
+        protected void OnDirectoryFound(FsvArgs args)
+        {
+            DirectoryFound?.Invoke(this, args);
+        }
+
+        protected void OnFilteredFileFound(FsvArgs args)
+        {
+            FilteredFileFound?.Invoke(this, args);
+        }
+
+        protected void OnFilteredDirectoryFound(FsvArgs args)
+        {
+            FilteredDirectoryFound?.Invoke(this, args);
+        }
+
+        #endregion
 
         public FileSystemVisitor() { }
         /// <summary>
@@ -47,29 +74,29 @@ namespace Task1AdvancedCSharp
             //Searching in directories
             foreach (var dir in directories)
             {
+                OnDirectoryFound(new FsvArgs());
                 //if the dir is excluded, do not search in this dir
                 if (ReturnItem(dir))
                 {
+                    OnFilteredDirectoryFound(new FsvArgs());
                     yield return dir;
 
-                    FileSystemVisitor fsv;
+                    FileSystemVisitor subFsv;
                     if (filter != null)
                     {
-                        fsv = new FileSystemVisitor(filter);
+                        subFsv = new FileSystemVisitor(filter);
                     }
                     else
                     {
-                        fsv = new FileSystemVisitor();
+                        subFsv = new FileSystemVisitor();
                     }
-                    fsv.RootDirectory = dir;
+                    subFsv.RootDirectory = dir;
+                    this.SubscribeToSubFsvEvents(subFsv);
 
                     //Searching in subdirectories
-                    foreach (var item in fsv)
+                    foreach (var item in subFsv)
                     {
-                        if (ReturnItem(item))
-                        {
-                            yield return item;
-                        }
+                        yield return item;
                     }
                 }
             }
@@ -79,8 +106,10 @@ namespace Task1AdvancedCSharp
             //Return files
             foreach (var file in files)
             {
+                this.OnFileFound(new FsvArgs());
                 if (ReturnItem(file))
                 {
+                    this.OnFilteredFileFound(new FsvArgs());
                     yield return file;
                 }
             }
@@ -92,6 +121,14 @@ namespace Task1AdvancedCSharp
         private bool ReturnItem(string item)
         {
             return this.filter == null || !this.filter(item);
+        }
+        
+        private void SubscribeToSubFsvEvents(FileSystemVisitor subFsv)
+        {
+            subFsv.DirectoryFound += (object s, FsvArgs e) => this.OnDirectoryFound(e);
+            subFsv.FileFound += (object s, FsvArgs e) => this.OnFileFound(e);
+            subFsv.FilteredDirectoryFound += (object s, FsvArgs e) => this.OnFilteredDirectoryFound(e);
+            subFsv.FilteredFileFound += (object s, FsvArgs e) => this.OnFilteredFileFound(e);
         }
 
         #endregion
