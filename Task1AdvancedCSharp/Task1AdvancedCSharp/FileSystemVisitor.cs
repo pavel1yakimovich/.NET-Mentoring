@@ -6,11 +6,23 @@ namespace Task1AdvancedCSharp
 {
     public class FsvArgs : EventArgs
     {
+        public string Name { get; private set; }
+
+        public FsvArgs(string name = null)
+        {
+            this.Name = name;
+        }
+
+        public void ExcludeFileOrDirectory()
+        {
+            FileSystemVisitor.ItemExcluded = true;
+        }
     }
 
     public class FileSystemVisitor
     {
         public string RootDirectory { get; set; }
+        public static bool ItemExcluded = false;
         private Predicate<string> filter;
 
         #region events
@@ -55,11 +67,14 @@ namespace Task1AdvancedCSharp
 
         #endregion
 
-        public FileSystemVisitor() { }
+        public FileSystemVisitor()
+        {
+            ItemExcluded = false;
+        }
         /// <summary>
         /// .ctor with filter delegate
         /// </summary>
-        /// <param name="filter">Should return true, if exclude file or directory</param>
+        /// <param name="filter">Should return true, if you exclude file or directory</param>
         public FileSystemVisitor(Predicate<string> filter)
         {
             this.filter = filter;
@@ -74,11 +89,11 @@ namespace Task1AdvancedCSharp
             //Searching in directories
             foreach (var dir in directories)
             {
-                OnDirectoryFound(new FsvArgs());
+                OnDirectoryFound(new FsvArgs(dir));
                 //if the dir is excluded, do not search in this dir
                 if (ReturnItem(dir))
                 {
-                    OnFilteredDirectoryFound(new FsvArgs());
+                    OnFilteredDirectoryFound(new FsvArgs(dir));
                     yield return dir;
 
                     FileSystemVisitor subFsv;
@@ -106,10 +121,10 @@ namespace Task1AdvancedCSharp
             //Return files
             foreach (var file in files)
             {
-                this.OnFileFound(new FsvArgs());
+                this.OnFileFound(new FsvArgs(file));
                 if (ReturnItem(file))
                 {
-                    this.OnFilteredFileFound(new FsvArgs());
+                    this.OnFilteredFileFound(new FsvArgs(file));
                     yield return file;
                 }
             }
@@ -120,9 +135,11 @@ namespace Task1AdvancedCSharp
 
         private bool ReturnItem(string item)
         {
-            return this.filter == null || !this.filter(item);
+            bool result = (this.filter == null || !this.filter(item)) && !ItemExcluded;
+            ItemExcluded = false;
+            return result;
         }
-        
+
         private void SubscribeToSubFsvEvents(FileSystemVisitor subFsv)
         {
             subFsv.DirectoryFound += (object s, FsvArgs e) => this.OnDirectoryFound(e);
