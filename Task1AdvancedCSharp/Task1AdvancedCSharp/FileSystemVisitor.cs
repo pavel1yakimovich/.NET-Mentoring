@@ -73,8 +73,9 @@ namespace Task1AdvancedCSharp
 
         #endregion
 
-        public FileSystemVisitor()
+        public FileSystemVisitor(string rootDirectory)
         {
+            this.RootDirectory = rootDirectory;
             ItemExcluded = false;
             IsStoped = false;
         }
@@ -82,13 +83,24 @@ namespace Task1AdvancedCSharp
         /// .ctor with filter delegate
         /// </summary>
         /// <param name="filter">Should return true, if you exclude file or directory</param>
-        public FileSystemVisitor(Predicate<string> filter) : this()
+        public FileSystemVisitor(string rootDirectory, Predicate<string> filter) : this(rootDirectory)
         {
             this.filter = filter;
         }
 
         public IEnumerator<string> GetEnumerator()
         {
+            if (String.IsNullOrEmpty(RootDirectory))
+            {
+                if (RootDirectory == null)
+                {
+                    throw new ArgumentNullException("rootDirectory");
+                }
+                else
+                {
+                    throw new ArgumentException("RootDoriectory is an empty string!");
+                }
+            }
             if (IsStoped)
             {
                 goto Finish;
@@ -123,13 +135,12 @@ namespace Task1AdvancedCSharp
                     FileSystemVisitor subFsv;
                     if (filter != null)
                     {
-                        subFsv = new FileSystemVisitor(filter);
+                        subFsv = new FileSystemVisitor(dir, filter);
                     }
                     else
                     {
-                        subFsv = new FileSystemVisitor();
+                        subFsv = new FileSystemVisitor(dir);
                     }
-                    subFsv.RootDirectory = dir;
                     this.SubscribeToSubFsvEvents(subFsv);
 
                     //Searching in subdirectories

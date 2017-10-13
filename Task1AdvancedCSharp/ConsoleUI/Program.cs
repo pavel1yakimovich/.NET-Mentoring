@@ -7,10 +7,9 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            var fsv = new FileSystemVisitor()
-            {
-                RootDirectory = "D:\\testfolder"
-            };
+            string rootDir = "D:\\testfolder";
+            var fsv = new FileSystemVisitor(rootDir);
+
             fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nSearch started!\n");
             fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nSearch finished\n");
 
@@ -26,10 +25,8 @@ namespace ConsoleUI
 
             Console.WriteLine("With filtration via delegate - shouldn't contain \"2\"");
 
-            fsv = new FileSystemVisitor(s => s.Contains("2"))
-            {
-                RootDirectory = "D:\\testfolder"
-            };
+            fsv = new FileSystemVisitor(rootDir, s => s.Contains("2"));
+
             fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nFiltered search started!\n");
             fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nFiltered search finished\n");
 
@@ -45,10 +42,8 @@ namespace ConsoleUI
 
             Console.WriteLine("With filtration via events - shouldn't contain \"2\"");
 
-            fsv = new FileSystemVisitor()
-            {
-                RootDirectory = "D:\\testfolder"
-            };
+            fsv = new FileSystemVisitor(rootDir);
+
             fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nFiltered search started!\n");
             fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nFiltered search finished\n");
 
@@ -80,10 +75,8 @@ namespace ConsoleUI
 
             Console.WriteLine("After file, containing \"file212.txt\" is found, finish search");
 
-            fsv = new FileSystemVisitor()
-            {
-                RootDirectory = "D:\\testfolder"
-            };
+            fsv = new FileSystemVisitor(rootDir);
+
             fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nSearch started!\n");
             fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nSearch finished\n");
 
@@ -103,6 +96,30 @@ namespace ConsoleUI
             foreach (var item in fsv)
             {
                 Console.WriteLine(item);
+            }
+
+            Console.WriteLine("Empty string passed as a rootElement");
+
+            try
+            {
+                fsv = new FileSystemVisitor(String.Empty);
+
+                fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nSearch started!\n");
+                fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nSearch finished\n");
+
+                fsv.FileFound += (object sender, FsvArgs e) => Console.WriteLine("File found");
+                fsv.DirectoryFound += (object sender, FsvArgs e) => Console.WriteLine("Directory found");
+                fsv.FilteredFileFound += (object sender, FsvArgs e) => Console.WriteLine("Filtered file found");
+                fsv.FilteredDirectoryFound += (object sender, FsvArgs e) => Console.WriteLine("Filtered directory found");
+
+                foreach (var item in fsv)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
 
             Console.Read();
