@@ -17,12 +17,18 @@ namespace Task1AdvancedCSharp
         {
             FileSystemVisitor.ItemExcluded = true;
         }
+
+        //public void Stop()
+        //{
+        //    FileSystemVisitor.IsStoped = true;
+        //}
     }
 
     public class FileSystemVisitor
     {
         public string RootDirectory { get; set; }
         public static bool ItemExcluded = false;
+        //public static bool IsStoped = false;
         private Predicate<string> filter;
 
         #region events
@@ -70,12 +76,13 @@ namespace Task1AdvancedCSharp
         public FileSystemVisitor()
         {
             ItemExcluded = false;
+           // IsStoped = false;
         }
         /// <summary>
         /// .ctor with filter delegate
         /// </summary>
         /// <param name="filter">Should return true, if you exclude file or directory</param>
-        public FileSystemVisitor(Predicate<string> filter)
+        public FileSystemVisitor(Predicate<string> filter) : this()
         {
             this.filter = filter;
         }
@@ -83,6 +90,10 @@ namespace Task1AdvancedCSharp
         public IEnumerator<string> GetEnumerator()
         {
             OnStart(new FsvArgs());
+            //if (IsStoped)
+            //{
+            //    goto Finish;
+            //}
 
             var directories = Directory.GetDirectories(RootDirectory);
 
@@ -90,10 +101,19 @@ namespace Task1AdvancedCSharp
             foreach (var dir in directories)
             {
                 OnDirectoryFound(new FsvArgs(dir));
+                //if (IsStoped)
+                //{
+                //    goto Finish;
+                //}
                 //if the dir is excluded, do not search in this dir
                 if (ReturnItem(dir))
                 {
                     OnFilteredDirectoryFound(new FsvArgs(dir));
+                    //if (IsStoped)
+                    //{
+                    //    goto Finish;
+                    //}
+
                     yield return dir;
 
                     FileSystemVisitor subFsv;
@@ -122,13 +142,22 @@ namespace Task1AdvancedCSharp
             foreach (var file in files)
             {
                 this.OnFileFound(new FsvArgs(file));
+                //if (IsStoped)
+                //{
+                //    goto Finish;
+                //}
                 if (ReturnItem(file))
                 {
                     this.OnFilteredFileFound(new FsvArgs(file));
+                    //if (IsStoped)
+                    //{
+                    //    goto Finish;
+                    //}
                     yield return file;
                 }
             }
 
+            Finish:
             OnFinish(new FsvArgs());
         }
         #region private methods

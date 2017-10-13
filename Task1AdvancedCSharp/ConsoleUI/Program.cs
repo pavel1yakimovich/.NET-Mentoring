@@ -45,7 +45,7 @@ namespace ConsoleUI
 
             Console.WriteLine("With filtration via events - shouldn't contain \"2\"");
 
-            fsv = new FileSystemVisitor(s => s.Contains("2"))
+            fsv = new FileSystemVisitor()
             {
                 RootDirectory = "D:\\testfolder"
             };
@@ -57,6 +57,7 @@ namespace ConsoleUI
                 Console.WriteLine("File found");
                 if (e.Name.Contains("2"))
                 {
+                    e.ExcludeFileOrDirectory();
                     Console.WriteLine("File excluded");
                 }
             };
@@ -65,6 +66,7 @@ namespace ConsoleUI
                 Console.WriteLine("Directory found");
                 if (e.Name.Contains("2"))
                 {
+                    e.ExcludeFileOrDirectory();
                     Console.WriteLine("Directory excluded");
                 }
             };
@@ -75,6 +77,8 @@ namespace ConsoleUI
             {
                 Console.WriteLine(item);
             }
+
+            
 
             Console.Read();
         }
