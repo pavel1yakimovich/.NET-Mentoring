@@ -5,11 +5,28 @@ using System.IO;
 
 namespace Task1AdvancedCSharp
 {
+    public class FsvArgs : EventArgs
+    {
+    }
+
     public class FileSystemVisitor
     {
         public string RootDirectory { get; set; }
         
         private Predicate<string> filter;
+
+        public event EventHandler<FsvArgs> SearchStarted;
+        public event EventHandler<FsvArgs> SearchFinished;
+
+        protected void OnStart(FsvArgs args)
+        {
+            SearchStarted?.Invoke(this, args);
+        }
+
+        protected void OnFinish(FsvArgs args)
+        {
+            SearchFinished?.Invoke(this, args);
+        }
 
         public FileSystemVisitor() { }
         /// <summary>
@@ -23,14 +40,15 @@ namespace Task1AdvancedCSharp
 
         public IEnumerator<string> GetEnumerator()
         {
+            OnStart(new FsvArgs());
+
             var directories = Directory.GetDirectories(RootDirectory);
-            var files = Directory.GetFiles(RootDirectory);
 
             //Searching in directories
             foreach (var dir in directories)
             {
                 //if the dir is excluded, do not search in this dir
-                if (filter == null || !filter(dir))
+                if (ReturnItem(dir))
                 {
                     yield return dir;
 
@@ -48,7 +66,7 @@ namespace Task1AdvancedCSharp
                     //Searching in subdirectories
                     foreach (var item in fsv)
                     {
-                        if (filter == null || !filter(item))
+                        if (ReturnItem(item))
                         {
                             yield return item;
                         }
@@ -56,14 +74,26 @@ namespace Task1AdvancedCSharp
                 }
             }
 
+            var files = Directory.GetFiles(RootDirectory);
+
             //Return files
             foreach (var file in files)
             {
-                if (filter == null || !filter(file))
+                if (ReturnItem(file))
                 {
                     yield return file;
                 }
             }
+
+            OnFinish(new FsvArgs());
         }
+        #region private methods
+
+        private bool ReturnItem(string item)
+        {
+            return this.filter == null || !this.filter(item);
+        }
+
+        #endregion
     }
 }

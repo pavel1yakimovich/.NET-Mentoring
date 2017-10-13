@@ -6,3 +6,10 @@ E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Deb
 E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.AssemblyInfo.cs
 E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.dll
 E:\Trainings EPAM\.NET Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.pdb
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\bin\Debug\netstandard1.4\Task1AdvancedCSharp.deps.json
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\bin\Debug\netstandard1.4\Task1AdvancedCSharp.dll
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\bin\Debug\netstandard1.4\Task1AdvancedCSharp.pdb
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.csprojResolveAssemblyReference.cache
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.AssemblyInfo.cs
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.dll
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\netstandard1.4\Task1AdvancedCSharp.pdb

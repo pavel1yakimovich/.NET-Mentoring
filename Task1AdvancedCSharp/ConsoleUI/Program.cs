@@ -9,8 +9,10 @@ namespace ConsoleUI
         {
             var fsv = new FileSystemVisitor()
             {
-                RootDirectory = "E:\\testfolder"
+                RootDirectory = "D:\\testfolder"                
             };
+            fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nSearch started!\n");
+            fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nSearch finished\n");
 
             foreach (var item in fsv)
             {
@@ -21,8 +23,10 @@ namespace ConsoleUI
 
             fsv = new FileSystemVisitor(s => s.Contains("2"))
             {
-                RootDirectory = "E:\\testfolder"
+                RootDirectory = "D:\\testfolder"
             };
+            fsv.SearchStarted += (object sender, FsvArgs e) => Console.WriteLine("\nFiltered search started!\n");
+            fsv.SearchFinished += (object sender, FsvArgs e) => Console.WriteLine("\nFiltered search finished\n");
 
             foreach (var item in fsv)
             {

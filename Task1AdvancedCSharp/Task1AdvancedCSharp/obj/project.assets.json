@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 2,
   "targets": {
     ".NETStandard,Version=v1.4": {
       "Microsoft.NETCore.Platforms/1.1.0": {
@@ -3703,31 +3703,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Pasha\\.nuget\\packages\\": {}
+    "C:\\Users\\Pavel_Yakimovich\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
-    "restoreSettings": {
-      "hideWarningsAndErrors": true
-    },
     "restore": {
-      "projectUniqueName": "E:\\Trainings EPAM\\.NET Mentoring\\Task1AdvancedCSharp\\Task1AdvancedCSharp\\Task1AdvancedCSharp.csproj",
+      "projectUniqueName": "D:\\Learning\\.NET-Mentoring\\Task1AdvancedCSharp\\Task1AdvancedCSharp\\Task1AdvancedCSharp.csproj",
       "projectName": "Task1AdvancedCSharp",
-      "projectPath": "E:\\Trainings EPAM\\.NET Mentoring\\Task1AdvancedCSharp\\Task1AdvancedCSharp\\Task1AdvancedCSharp.csproj",
-      "packagesPath": "C:\\Users\\Pasha\\.nuget\\packages\\",
-      "outputPath": "E:\\Trainings EPAM\\.NET Mentoring\\Task1AdvancedCSharp\\Task1AdvancedCSharp\\obj\\",
+      "projectPath": "D:\\Learning\\.NET-Mentoring\\Task1AdvancedCSharp\\Task1AdvancedCSharp\\Task1AdvancedCSharp.csproj",
+      "outputPath": "D:\\Learning\\.NET-Mentoring\\Task1AdvancedCSharp\\Task1AdvancedCSharp\\obj\\",
       "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\Pasha\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-      ],
       "originalTargetFrameworks": [
         "netstandard1.4"
       ],
-      "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {}
-      },
       "frameworks": {
         "netstandard1.4": {
           "projectReferences": {}
