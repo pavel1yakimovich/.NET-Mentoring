@@ -1,0 +1,5 @@
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\bin\Debug\Task1AdvancedCSharp.dll
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\bin\Debug\Task1AdvancedCSharp.pdb
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\Task1AdvancedCSharp.csprojResolveAssemblyReference.cache
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\Task1AdvancedCSharp.dll
+D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\Task1AdvancedCSharp\obj\Debug\Task1AdvancedCSharp.pdb

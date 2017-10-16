@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Task1AdvancedCSharp\Task1AdvancedCSharp.csproj">
-      <Project>{38B52DC5-4E54-45BD-AD78-D7178D45771D}</Project>
+      <Project>{538463c1-1d62-42ee-bfb1-6a7bf9bdc157}</Project>
       <Name>Task1AdvancedCSharp</Name>
     </ProjectReference>
   </ItemGroup>

@@ -18,6 +18,5 @@ D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\System.IO.Fil
 D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\Task1AdvancedCSharp.dll
 D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\bin\Debug\Task1AdvancedCSharp.pdb
 D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.csprojResolveAssemblyReference.cache
-D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.csproj.ConsoleUI.exe.config
 D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.exe
 D:\Learning\.NET-Mentoring\Task1AdvancedCSharp\ConsoleUI\obj\Debug\ConsoleUI.pdb

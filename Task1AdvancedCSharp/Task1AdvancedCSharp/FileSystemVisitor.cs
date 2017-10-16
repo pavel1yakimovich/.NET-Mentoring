@@ -26,6 +26,8 @@ namespace Task1AdvancedCSharp
 
     public class FileSystemVisitor
     {
+        private IDirectoryAdapter directoryAdapter;
+
         public string RootDirectory { get; set; }
         public static bool ItemExcluded = false;
         public static bool IsStoped = false;
@@ -73,8 +75,9 @@ namespace Task1AdvancedCSharp
 
         #endregion
 
-        public FileSystemVisitor(string rootDirectory)
+        public FileSystemVisitor(string rootDirectory, IDirectoryAdapter adapter = null)
         {
+            this.directoryAdapter = adapter ?? new DirectoryAdapter();
             this.RootDirectory = rootDirectory;
             ItemExcluded = false;
             IsStoped = false;
@@ -83,7 +86,7 @@ namespace Task1AdvancedCSharp
         /// .ctor with filter delegate
         /// </summary>
         /// <param name="filter">Should return true, if you exclude file or directory</param>
-        public FileSystemVisitor(string rootDirectory, Predicate<string> filter) : this(rootDirectory)
+        public FileSystemVisitor(string rootDirectory, Predicate<string> filter, IDirectoryAdapter adapter = null) : this(rootDirectory, adapter)
         {
             this.filter = filter;
         }
@@ -107,7 +110,7 @@ namespace Task1AdvancedCSharp
             }
             OnStart(new FsvArgs());
 
-            var directories = Directory.GetDirectories(RootDirectory);
+            var directories = directoryAdapter.GetDirectories(RootDirectory);
 
             //Searching in directories
             foreach (var dir in directories)
@@ -135,11 +138,11 @@ namespace Task1AdvancedCSharp
                     FileSystemVisitor subFsv;
                     if (filter != null)
                     {
-                        subFsv = new FileSystemVisitor(dir, filter);
+                        subFsv = new FileSystemVisitor(dir, filter, this.directoryAdapter);
                     }
                     else
                     {
-                        subFsv = new FileSystemVisitor(dir);
+                        subFsv = new FileSystemVisitor(dir, this.directoryAdapter);
                     }
                     this.SubscribeToSubFsvEvents(subFsv);
 
@@ -155,7 +158,7 @@ namespace Task1AdvancedCSharp
                 }
             }
 
-            var files = Directory.GetFiles(RootDirectory);
+            var files = directoryAdapter.GetFiles(RootDirectory);
 
             //Return files
             foreach (var file in files)
