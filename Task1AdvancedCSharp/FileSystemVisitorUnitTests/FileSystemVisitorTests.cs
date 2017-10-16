@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace FileSystemVisitorUnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class FileSystemVisitorTests
     {
         private Mock<IDirectoryAdapter> mockDirectory;
 
@@ -25,12 +25,60 @@ namespace FileSystemVisitorUnitTests
         }
 
         [TestMethod]
-        public void RegularMode()
+        public void FileSystemVisitor_RegularMode()
         {
             var fsv = new FileSystemVisitor("mock", mockDirectory.Object);
 
             var expected = new string[] {"folder1", "folder11", "file112", "file111", "folder12", "file12", "file11",
                 "folder2", "folder21", "folder22", "file222", "file221", "folder3", "file2", "file1"};
+
+            var actualArray = new List<string>();
+            foreach (var item in fsv)
+            {
+                actualArray.Add(item);
+            }
+
+            Assert.IsTrue(expected.SequenceEqual(actualArray));
+        }
+
+        [TestMethod]
+        public void FileSystemVisitor_WithFilter_ViaCtor()
+        {
+            var fsv = new FileSystemVisitor("mock",i => i.Contains("2"), mockDirectory.Object);
+
+            var expected = new string[] {"folder1", "folder11", "file111", "file11",
+                "folder3", "file1"};
+
+            var actualArray = new List<string>();
+            foreach (var item in fsv)
+            {
+                actualArray.Add(item);
+            }
+
+            Assert.IsTrue(expected.SequenceEqual(actualArray));
+        }
+
+        [TestMethod]
+        public void FileSystemVisitor_WithFilter_ViaDelegates()
+        {
+            var fsv = new FileSystemVisitor("mock", mockDirectory.Object);
+            fsv.FileFound += (object sender, FsvArgs e) =>
+            {
+                if (e.Name.Contains("2"))
+                {
+                    e.ExcludeFileOrDirectory();
+                }
+            };
+            fsv.DirectoryFound += (object sender, FsvArgs e) =>
+            {
+                if (e.Name.Contains("2"))
+                {
+                    e.ExcludeFileOrDirectory();
+                }
+            };
+
+            var expected = new string[] {"folder1", "folder11", "file111", "file11",
+                "folder3", "file1"};
 
             var actualArray = new List<string>();
             foreach (var item in fsv)
