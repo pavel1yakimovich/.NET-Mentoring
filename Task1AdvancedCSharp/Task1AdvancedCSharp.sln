@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{E6620CD8-C87B-453E-ADC2-77909A73887D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitorUnitTests", "FileSystemVisitorUnitTests\FileSystemVisitorUnitTests.csproj", "{6EF85504-A682-493B-A306-56DAED015620}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1AdvancedCSharp", "Task1AdvancedCSharp\Task1AdvancedCSharp.csproj", "{538463C1-1D62-42EE-BFB1-6A7BF9BDC157}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6EF85504-A682-493B-A306-56DAED015620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EF85504-A682-493B-A306-56DAED015620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EF85504-A682-493B-A306-56DAED015620}.Release|Any CPU.ActiveCfg = Release|Any CPU

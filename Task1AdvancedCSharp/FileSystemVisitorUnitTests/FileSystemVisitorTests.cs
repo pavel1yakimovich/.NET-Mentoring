@@ -109,7 +109,7 @@ namespace FileSystemVisitorUnitTests
             {
                 actualArray.Add(item);
             }
-
+            
             Assert.IsTrue(expected.SequenceEqual(actualArray));
         }
     }
