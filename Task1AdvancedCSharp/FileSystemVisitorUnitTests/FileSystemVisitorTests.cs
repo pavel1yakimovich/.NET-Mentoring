@@ -88,5 +88,29 @@ namespace FileSystemVisitorUnitTests
 
             Assert.IsTrue(expected.SequenceEqual(actualArray));
         }
+
+        [TestMethod]
+        public void FileSystemVisitor_TerminateSearch()
+        {
+            var fsv = new FileSystemVisitor("mock", mockDirectory.Object);
+            fsv.FileFound += (object sender, FsvArgs e) =>
+            {
+                if (e.Name == ("file222"))
+                {
+                    e.Stop();
+                }
+            };
+
+            var expected = new string[] {"folder1", "folder11", "file112", "file111", "folder12", "file12", "file11",
+                "folder2", "folder21", "folder22"};
+
+            var actualArray = new List<string>();
+            foreach (var item in fsv)
+            {
+                actualArray.Add(item);
+            }
+
+            Assert.IsTrue(expected.SequenceEqual(actualArray));
+        }
     }
 }
