@@ -119,7 +119,7 @@ namespace Task1AdvancedCSharp
                 {
                     goto Finish;
                 }
-                OnDirectoryFound(new FsvArgs(dir));
+                OnDirectoryFound(CreateArgs(dir));
                 if (IsStoped)
                 {
                     goto Finish;
@@ -127,7 +127,7 @@ namespace Task1AdvancedCSharp
                 //if the dir is excluded, do not search in this dir
                 if (ReturnItem(dir))
                 {
-                    OnFilteredDirectoryFound(new FsvArgs(dir));
+                    OnFilteredDirectoryFound(CreateArgs(dir));
                     if (IsStoped)
                     {
                         goto Finish;
@@ -163,14 +163,14 @@ namespace Task1AdvancedCSharp
             //Return files
             foreach (var file in files)
             {
-                this.OnFileFound(new FsvArgs(file));
+                this.OnFileFound(CreateArgs(file));
                 if (IsStoped)
                 {
                     goto Finish;
                 }
                 if (ReturnItem(file))
                 {
-                    this.OnFilteredFileFound(new FsvArgs(file));
+                    this.OnFilteredFileFound(CreateArgs(file));
                     if (IsStoped)
                     {
                         goto Finish;
@@ -186,7 +186,7 @@ namespace Task1AdvancedCSharp
 
         private bool ReturnItem(string item)
         {
-            bool result = (this.filter == null || !this.filter(item)) && !ItemExcluded;
+            bool result = (this.filter == null || !this.filter(item.Replace(RootDirectory, String.Empty))) && !ItemExcluded;
             ItemExcluded = false;
             return result;
         }
@@ -198,6 +198,8 @@ namespace Task1AdvancedCSharp
             subFsv.FilteredDirectoryFound += (object s, FsvArgs e) => this.OnFilteredDirectoryFound(e);
             subFsv.FilteredFileFound += (object s, FsvArgs e) => this.OnFilteredFileFound(e);
         }
+
+        private FsvArgs CreateArgs(string name) => new FsvArgs(name.Replace(RootDirectory, String.Empty));
 
         #endregion
     }
