@@ -1,0 +1,7 @@
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\bin\Debug\Module2ExceptionHandling.exe.config
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\bin\Debug\Module2ExceptionHandling.exe
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\bin\Debug\Module2ExceptionHandling.pdb
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\obj\Debug\Module2ExceptionHandling.csprojResolveAssemblyReference.cache
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\obj\Debug\Module2ExceptionHandling.csproj.CoreCompileInputs.cache
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\obj\Debug\Module2ExceptionHandling.exe
+c:\users\pasha\documents\visual studio 2017\Projects\Module2ExceptionHandling\Module2ExceptionHandling\obj\Debug\Module2ExceptionHandling.pdb
