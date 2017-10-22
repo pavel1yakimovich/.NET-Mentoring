@@ -1,0 +1,7 @@
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\bin\Debug\Module2ExceptionHandling.exe.config
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\bin\Debug\Module2ExceptionHandling.exe
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\bin\Debug\Module2ExceptionHandling.pdb
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\obj\Debug\Task1.csprojResolveAssemblyReference.cache
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\obj\Debug\Task1.csproj.CoreCompileInputs.cache
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\obj\Debug\Module2ExceptionHandling.exe
+E:\Trainings EPAM\.NET Mentoring\Module2ExceptionHandling\Task1\obj\Debug\Module2ExceptionHandling.pdb
