@@ -125,5 +125,23 @@ namespace SampleQueries
             }
         }
 
+        [Category("Projection Operators")]
+        [Title("Select : Task 3")]
+        [Description("This sample returns all customers with date of their first order")]
+        public void Linq4()
+        {
+            var customers =
+                dataSource.Customers.Where(c => c.Orders.Any()).Select(c => new
+                {
+                    Customer = c.CustomerID,
+                    Date = c.Orders.Select(o => o.OrderDate).Min().ToString("MM/yyyy")
+                });
+
+            foreach (var c in customers)
+            {
+                ObjectDumper.Write(c);
+            }
+        }
+
     }
 }
