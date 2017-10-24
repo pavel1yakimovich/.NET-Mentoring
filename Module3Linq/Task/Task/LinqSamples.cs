@@ -126,20 +126,42 @@ namespace SampleQueries
         }
 
         [Category("Projection Operators")]
-        [Title("Select : Task 3")]
+        [Title("Select : Task 4")]
         [Description("This sample returns all customers with date of their first order")]
         public void Linq4()
         {
             var customers =
                 dataSource.Customers.Where(c => c.Orders.Any()).Select(c => new
                 {
-                    Customer = c.CustomerID,
-                    Date = c.Orders.Select(o => o.OrderDate).Min().ToString("MM/yyyy")
+                    Customer = c,
+                    Date = c.Orders.Select(o => o.OrderDate).Min()
                 });
 
             foreach (var c in customers)
             {
-                ObjectDumper.Write(c);
+                Console.WriteLine($"Customer={c.Customer.CustomerID} First order={c.Date.Month}/{c.Date.Year}");
+            }
+        }
+
+        [Category("Ordering Operators")]
+        [Title("Order : Task 5")]
+        [Description("This sample returns all customers with date of their first order order by year, month, sum of orders, customer's name")]
+        public void Linq5()
+        {
+            var customers =
+                dataSource.Customers.Where(c => c.Orders.Any()).Select(c => new
+                    {
+                        Customer = c,
+                        Date = c.Orders.Select(o => o.OrderDate).Min()
+                    })
+                    .OrderBy(c => c.Date.Year)
+                    .ThenBy(c => c.Date.Month)
+                    .ThenByDescending(c => c.Customer.Orders.Sum(o => o.Total))
+                    .ThenBy(c => c.Customer.CustomerID);
+
+            foreach (var c in customers)
+            {
+                Console.WriteLine($"Customer={c.Customer.CustomerID} First order={c.Date.Month}/{c.Date.Year} Sum={c.Customer.Orders.Sum(o => o.Total)}");
             }
         }
 
