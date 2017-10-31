@@ -178,5 +178,24 @@ namespace SampleQueries
                 ObjectDumper.Write(c);
             }
         }
+
+        [Category("Ordering Operators")]
+        [Title("Group : Task 7")]
+        [Description("This sample groups products")]
+        public void Linq007()
+        {
+            var products = dataSource.Products.GroupBy(x => x.Category, (key, g1) =>
+                                g1.GroupBy(x => x.UnitsInStock));
+
+            products.SelectMany(p => p).Last().OrderBy(o => o.UnitPrice);
+
+            foreach (var p in products.SelectMany(o => o))
+            {
+                foreach (var i in p.Select(t => t))
+                {
+                    ObjectDumper.Write(i);
+                }
+            }
+        }
     }
 }
