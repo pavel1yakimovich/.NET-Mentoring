@@ -98,12 +98,12 @@ namespace SampleQueries
                 Console.WriteLine();
             }
 
-            var newPairs = dataSource.Customers.Join(dataSource.Suppliers.GroupBy(s => s.City), c => c.City, s => s.Key, (c, s) => new { Customer = c, Suppliers = s });
+            var newPairs = dataSource.Customers.Select(c => new { customer = c, suppliers = dataSource.Suppliers.Where(s => s.City == c.City) });
 
             foreach (var p in newPairs)
             {
-                Console.Write($"Customer: {p.Customer.CustomerID}; suppliers: ");
-                foreach (var s in p.Suppliers)
+                Console.Write($"Customer: {p.customer.CustomerID}; suppliers: ");
+                foreach (var s in p.suppliers)
                 {
                     Console.Write($"{s.SupplierName}, ");
                 }
@@ -197,6 +197,14 @@ namespace SampleQueries
                 }
             }
         }
+
+        //[Category("Grouping Operators")]
+        //[Title("Group : Task 8")]
+        //[Description("This sample groups product by their price in 3 groups")]
+        //public void Linq009()
+        //{
+        //    var products = dataSource.Products.GroupBy(p => p.UnitPrice, );
+        //}
 
         [Category("Grouping Operators")]
         [Title("Group : Task 9")]
