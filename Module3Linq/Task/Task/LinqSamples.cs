@@ -211,5 +211,33 @@ namespace SampleQueries
             Console.WriteLine("intensity:");
             ObjectDumper.Write(averageIntensity);
         }
+
+        [Category("Grouping Operators")]
+        [Title("Group : Task 10")]
+        [Description("This sample return statistics")]
+        public void Linq010()
+        {
+            var byMonth = dataSource.Customers.SelectMany(c => c.Orders).GroupBy(o => o.OrderDate.Month);
+            var byYear = dataSource.Customers.SelectMany(c => c.Orders).GroupBy(o => o.OrderDate.Year);
+            var byYearAndMonth = dataSource.Customers.SelectMany(c => c.Orders).GroupBy(o => new { month = o.OrderDate.Month, year = o.OrderDate.Year } );
+
+            Console.WriteLine("by month");
+            foreach (var item in byMonth)
+            {
+                ObjectDumper.Write(item);
+            }
+
+            Console.WriteLine("by year");
+            foreach (var item in byYear)
+            {
+                ObjectDumper.Write(item);
+            }
+            
+            Console.WriteLine("by year and month");
+            foreach (var item in byYearAndMonth)
+            {
+                ObjectDumper.Write(item);
+            }
+        }
     }
 }
