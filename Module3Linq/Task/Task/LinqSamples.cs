@@ -179,7 +179,7 @@ namespace SampleQueries
             }
         }
 
-        [Category("Ordering Operators")]
+        [Category("Grouping Operators")]
         [Title("Group : Task 7")]
         [Description("This sample groups products")]
         public void Linq007()
@@ -196,6 +196,20 @@ namespace SampleQueries
                     ObjectDumper.Write(i);
                 }
             }
+        }
+
+        [Category("Grouping Operators")]
+        [Title("Group : Task 9")]
+        [Description("This sample return average profitability of city and its intensity")]
+        public void Linq009()
+        {
+            var averageProfitability = dataSource.Customers.GroupBy(c => c.City, (key, c) => new { city = key, average = c.SelectMany(o => o.Orders).Average(p => p.Total) });
+            var averageIntensity = dataSource.Customers.GroupBy(c => c.City, (key, c) => new { city = key, average = c.Average(cus => cus.Orders.Count()) });
+
+            Console.WriteLine("profitability:");
+            ObjectDumper.Write(averageProfitability);
+            Console.WriteLine("intensity:");
+            ObjectDumper.Write(averageIntensity);
         }
     }
 }
