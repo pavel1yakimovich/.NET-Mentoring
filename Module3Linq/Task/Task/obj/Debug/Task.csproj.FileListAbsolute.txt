@@ -7,3 +7,13 @@ D:\Learning\.NET-Mentoring\Module3Linq\Task\Task\obj\Debug\SampleSupport.SampleF
 D:\Learning\.NET-Mentoring\Module3Linq\Task\Task\obj\Debug\Task.csproj.GenerateResource.Cache
 D:\Learning\.NET-Mentoring\Module3Linq\Task\Task\obj\Debug\Task.exe
 D:\Learning\.NET-Mentoring\Module3Linq\Task\Task\obj\Debug\Task.pdb
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\bin\Debug\Task.exe.config
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\bin\Debug\Task.exe
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\bin\Debug\Task.pdb
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\Task.csprojResolveAssemblyReference.cache
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\Task.Properties.Resources.resources
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\SampleSupport.SampleForm.resources
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\Task.csproj.GenerateResource.Cache
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\Task.csproj.CoreCompileInputs.cache
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\Task.exe
+E:\Trainings EPAM\.NET Mentoring\Module3Linq\Task\Task\obj\Debug\Task.pdb

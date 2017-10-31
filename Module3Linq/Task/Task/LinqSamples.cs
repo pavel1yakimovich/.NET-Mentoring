@@ -165,5 +165,18 @@ namespace SampleQueries
             }
         }
 
+        [Category("Ordering Operators")]
+        [Title("Order : Task 6")]
+        [Description("This sample returns all customers without region or mobile operator and non-digit postal code")]
+        public void Linq006()
+        {
+            var number = 0;
+            var customers = dataSource.Customers.Where(c => String.IsNullOrWhiteSpace(c.Region) || c.Phone.First() != '(' || !int.TryParse(c.PostalCode, out number));
+
+            foreach (var c in customers)
+            {
+                ObjectDumper.Write(c);
+            }
+        }
     }
 }
