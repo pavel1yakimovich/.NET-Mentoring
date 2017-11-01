@@ -203,10 +203,7 @@ namespace SampleQueries
         [Description("This sample groups product by their price in 3 groups")]
         public void Linq008()
         {
-            var products = dataSource.Products.GroupBy(p =>
-            {
-                return p.UnitPrice > 50 ? "high price" : p.UnitPrice > 20 ? "medium price" : "low price";
-            });
+            var products = dataSource.Products.GroupBy(p => p.UnitPrice > 50 ? "high price" : p.UnitPrice > 20 ? "medium price" : "low price");
 
             foreach (var p in products)
             {
