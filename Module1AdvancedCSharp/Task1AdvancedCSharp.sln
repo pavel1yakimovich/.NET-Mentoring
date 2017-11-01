@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileSystemVisitorUnitTests"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task1AdvancedCSharp", "Task1AdvancedCSharp\Task1AdvancedCSharp.csproj", "{538463C1-1D62-42EE-BFB1-6A7BF9BDC157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleUI", "ConsoleUI\ConsoleUI.csproj", "{E6620CD8-C87B-453E-ADC2-77909A73887D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{538463C1-1D62-42EE-BFB1-6A7BF9BDC157}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{538463C1-1D62-42EE-BFB1-6A7BF9BDC157}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{538463C1-1D62-42EE-BFB1-6A7BF9BDC157}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E6620CD8-C87B-453E-ADC2-77909A73887D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
