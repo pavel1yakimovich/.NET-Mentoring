@@ -186,7 +186,7 @@ namespace Task1AdvancedCSharp
 
         private bool ReturnItem(string item)
         {
-            bool result = (this.filter == null || !this.filter(item.Replace(RootDirectory, String.Empty))) && !ItemExcluded;
+            bool result = (this.filter == null || !this.filter(item.Replace($"{RootDirectory}\\\\", String.Empty))) && !ItemExcluded;
             ItemExcluded = false;
             return result;
         }
@@ -199,7 +199,7 @@ namespace Task1AdvancedCSharp
             subFsv.FilteredFileFound += (object s, FsvArgs e) => this.OnFilteredFileFound(e);
         }
 
-        private FsvArgs CreateArgs(string name) => new FsvArgs(name.Replace(RootDirectory, String.Empty));
+        private FsvArgs CreateArgs(string name) => new FsvArgs(name.Replace($"{RootDirectory}\\", String.Empty));
 
         #endregion
     }
