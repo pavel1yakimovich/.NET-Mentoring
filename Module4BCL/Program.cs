@@ -5,17 +5,19 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Module4BCL
 {
     class Program
     {
-        private List<string> folders;
+        private static int count;
         static void Main(string[] args)
         {
             List<string> folders;
-            ConfigurateApp(out folders);
+            List<RuleElement> rules;
+            ConfigurateApp(out folders, out rules);
             FileSystemWatcher watcher = new FileSystemWatcher();
             watcher.Path = "D:\\testfolder";
             watcher.NotifyFilter = NotifyFilters.LastWrite;
@@ -29,22 +31,28 @@ namespace Module4BCL
 
         private static void OnChanged(object sender, FileSystemEventArgs e)
         {
-            if (e.Name.Contains("."))
-            {
-                Console.WriteLine("File found");
-
-
-            }
+            count++;
         }
 
-        private static void ConfigurateApp(out List<string> folders)
+        private static void ConfigurateApp(out List<string> folders, out List<RuleElement> rules)
         {
-            folders = new List<string>();
             var asm = Assembly.GetExecutingAssembly();
             var section = (ConfigurationManager.GetSection("fileSystemWatcher") as FileSystemWatcherConfigurationSection);
+
+            folders = new List<string>();
             foreach (var item in section.Folders)
-                Console.WriteLine((item as FolderElement).Name);
-            var culture = section.Culture;
+            {
+                folders.Add((item as FolderElement)?.Name);
+            }
+
+            rules = new List<RuleElement>();
+            foreach (var item in section.Rules)
+            {
+                rules.Add(item as RuleElement);
+            }
+
+            Thread.CurrentThread.CurrentCulture = section.Culture;
+            Thread.CurrentThread.CurrentUICulture = section.Culture;
         }
     }
 }
