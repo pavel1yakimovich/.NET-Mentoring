@@ -40,21 +40,29 @@ namespace Module4BCL
 
             Console.WriteLine($"{strings.FileFound}{e.FullPath}");
             count++;
+            bool ruleFound = false;
             foreach (var rule in rules)
             {
                 StringBuilder fileNameWithoutExtension = new StringBuilder(Path.GetFileNameWithoutExtension(e.Name));
                 if (new Regex(rule.Template).IsMatch(fileNameWithoutExtension.ToString()))
                 {
+                    ruleFound = true;
+                    Console.WriteLine($"{strings.RuleFound}{rule.Template}");
                     StringBuilder newPath = new StringBuilder(e.FullPath.Replace(e.Name, $"{rule.Folder}\\"));
                     new FileInfo(newPath.ToString()).Directory.Create();
                     var date = DateTime.Now;
                     newPath.Append(fileNameWithoutExtension.ToString());
-                    newPath = rule.AddDate ? newPath.Append(date.ToShortDateString()) : newPath;
-                    newPath = rule.AddIndex ? newPath.Append(count) : newPath;
+                    newPath = rule.AddDate ? newPath.Append(date.ToString("m", strings.Culture.DateTimeFormat)) : newPath;
+                    newPath = rule.AddIndex ? newPath.Append($"_{count}") : newPath;
                     newPath.Append(Path.GetExtension(e.Name));
                     File.Move(e.FullPath, newPath.ToString());
                     Console.WriteLine($"{strings.FileReplaced}{newPath}");
                 }
+            }
+
+            if (!ruleFound)
+            {
+                Console.WriteLine($"{strings.RuleNotFound}");
             }
         }
 

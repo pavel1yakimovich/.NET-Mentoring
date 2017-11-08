@@ -123,6 +123,12 @@
   <data name="FileReplaced" xml:space="preserve">
     <value>Файл перемещен: </value>
   </data>
+  <data name="RuleFound" xml:space="preserve">
+    <value>Подходящий шаблон найден: </value>
+  </data>
+  <data name="RuleNotFound" xml:space="preserve">
+    <value>Не найдено подходящего шаблона(((((</value>
+  </data>
   <data name="StringToFinish" xml:space="preserve">
     <value>Введите  \'q\', чтобы выйти из программы</value>
   </data>

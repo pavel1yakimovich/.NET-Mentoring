@@ -123,6 +123,12 @@
   <data name="FileReplaced" xml:space="preserve">
     <value>File replaced: </value>
   </data>
+  <data name="RuleFound" xml:space="preserve">
+    <value>Rule found: </value>
+  </data>
+  <data name="RuleNotFound" xml:space="preserve">
+    <value>No rule found:(</value>
+  </data>
   <data name="StringToFinish" xml:space="preserve">
     <value>Press \'q\' to quit the sample.</value>
   </data>

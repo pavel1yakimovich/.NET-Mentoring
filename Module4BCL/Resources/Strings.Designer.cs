@@ -79,6 +79,24 @@ namespace Module4BCL.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Rule found: .
+        /// </summary>
+        internal static string RuleFound {
+            get {
+                return ResourceManager.GetString("RuleFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No rule found:(.
+        /// </summary>
+        internal static string RuleNotFound {
+            get {
+                return ResourceManager.GetString("RuleNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Press \&apos;q\&apos; to quit the sample..
         /// </summary>
         internal static string StringToFinish {
