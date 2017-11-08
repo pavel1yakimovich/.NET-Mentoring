@@ -1,0 +1,6 @@
+D:\Learning\.NET-Mentoring\Module4BCL\bin\Debug\Module4BCL.exe.config
+D:\Learning\.NET-Mentoring\Module4BCL\bin\Debug\Module4BCL.exe
+D:\Learning\.NET-Mentoring\Module4BCL\bin\Debug\Module4BCL.pdb
+D:\Learning\.NET-Mentoring\Module4BCL\obj\Debug\Module4BCL.csprojResolveAssemblyReference.cache
+D:\Learning\.NET-Mentoring\Module4BCL\obj\Debug\Module4BCL.exe
+D:\Learning\.NET-Mentoring\Module4BCL\obj\Debug\Module4BCL.pdb
