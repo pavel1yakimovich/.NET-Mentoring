@@ -4,6 +4,7 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -33,15 +34,25 @@ namespace Module4BCL
         private static void OnChanged(object sender, FileSystemEventArgs e)
         {
             //TODO: check whether it's file or directory
+            if (!e.Name.Contains('.'))
+            {
+                return;
+            }
             Console.WriteLine($"file = {e.FullPath}");
             count++;
             foreach (var rule in rules)
             {
-                if (new Regex(rule.Template).IsMatch(e.Name.Split('.')[0]))
+                StringBuilder fileNameWithoutExtension = new StringBuilder(Path.GetFileNameWithoutExtension(e.Name));
+                if (new Regex(rule.Template).IsMatch(fileNameWithoutExtension.ToString()))
                 {
-                    var newPath = e.FullPath.Insert(e.FullPath.IndexOf(e.Name), $"{rule.Folder}\\");
-                    new FileInfo(newPath).Directory.Create();
-                    File.Move(e.FullPath, newPath);
+                    StringBuilder newPath = new StringBuilder(e.FullPath.Replace(e.Name, $"{rule.Folder}\\"));
+                    new FileInfo(newPath.ToString()).Directory.Create();
+                    var date = DateTime.Now;
+                    newPath.Append(fileNameWithoutExtension.ToString());
+                    newPath = rule.AddDate ? newPath.Append(date.ToShortDateString()) : newPath;
+                    newPath = rule.AddIndex ? newPath.Append(count) : newPath;
+                    newPath.Append(Path.GetExtension(e.Name));
+                    File.Move(e.FullPath, newPath.ToString());
                     Console.WriteLine($"newPath = {newPath}");
                 }
             }
