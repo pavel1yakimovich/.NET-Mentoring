@@ -7,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
+using strings = Module4BCL.Resources.Strings;
 
 namespace Module4BCL
 {
@@ -27,18 +27,18 @@ namespace Module4BCL
                 watcher.Created += new FileSystemEventHandler(OnChanged);
                 watcher.EnableRaisingEvents = true;
             }
-            Console.WriteLine("Press \'q\' to quit the sample.");
+            Console.WriteLine(strings.StringToFinish);
             while (Console.Read() != 'q') ;
         }
 
         private static void OnChanged(object sender, FileSystemEventArgs e)
         {
-            //TODO: check whether it's file or directory
             if (!e.Name.Contains('.'))
             {
                 return;
             }
-            Console.WriteLine($"file = {e.FullPath}");
+
+            Console.WriteLine($"{strings.FileFound}{e.FullPath}");
             count++;
             foreach (var rule in rules)
             {
@@ -53,7 +53,7 @@ namespace Module4BCL
                     newPath = rule.AddIndex ? newPath.Append(count) : newPath;
                     newPath.Append(Path.GetExtension(e.Name));
                     File.Move(e.FullPath, newPath.ToString());
-                    Console.WriteLine($"newPath = {newPath}");
+                    Console.WriteLine($"{strings.FileReplaced}{newPath}");
                 }
             }
         }
@@ -73,6 +73,8 @@ namespace Module4BCL
             {
                 rules.Add(item as RuleElement);
             }
+
+            strings.Culture = section.Culture;
 
             Thread.CurrentThread.CurrentCulture = section.Culture;
             Thread.CurrentThread.CurrentUICulture = section.Culture;

@@ -7,7 +7,11 @@ D:\Learning\.NET-Mentoring\Module4BCL\obj\Debug\Module4BCL.pdb
 E:\Trainings EPAM\.NET Mentoring\Module4BCL\bin\Debug\Module4BCL.exe.config
 E:\Trainings EPAM\.NET Mentoring\Module4BCL\bin\Debug\Module4BCL.exe
 E:\Trainings EPAM\.NET Mentoring\Module4BCL\bin\Debug\Module4BCL.pdb
-E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.csprojResolveAssemblyReference.cache
 E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.csproj.CoreCompileInputs.cache
 E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.exe
 E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.pdb
+E:\Trainings EPAM\.NET Mentoring\Module4BCL\bin\Debug\ru-RU\Module4BCL.resources.dll
+E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.Resources.Strings.ru-RU.resources
+E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.csproj.GenerateResource.Cache
+E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\ru-RU\Module4BCL.resources.dll
+E:\Trainings EPAM\.NET Mentoring\Module4BCL\obj\Debug\Module4BCL.Resources.Strings.resources
