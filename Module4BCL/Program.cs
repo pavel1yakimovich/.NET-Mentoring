@@ -22,12 +22,7 @@ namespace Module4BCL
             {
                 FileSystemWatcher watcher = new FileSystemWatcher();
                 watcher.Path = folder;
-                watcher.NotifyFilter = NotifyFilters.LastAccess |
-                         NotifyFilters.LastWrite |
-                         NotifyFilters.FileName |
-                         NotifyFilters.DirectoryName;
                 watcher.Filter = "*.*";
-                watcher.Changed += new FileSystemEventHandler(OnChanged);
                 watcher.Created += new FileSystemEventHandler(OnChanged);
                 watcher.EnableRaisingEvents = true;
             }
@@ -37,6 +32,8 @@ namespace Module4BCL
 
         private static void OnChanged(object sender, FileSystemEventArgs e)
         {
+            //TODO: check whether it's file or directory
+            Console.WriteLine($"file = {e.FullPath}");
             count++;
             foreach (var rule in rules)
             {
@@ -45,6 +42,7 @@ namespace Module4BCL
                     var newPath = e.FullPath.Insert(e.FullPath.IndexOf(e.Name), $"{rule.Folder}\\");
                     new FileInfo(newPath).Directory.Create();
                     File.Move(e.FullPath, newPath);
+                    Console.WriteLine($"newPath = {newPath}");
                 }
             }
         }
