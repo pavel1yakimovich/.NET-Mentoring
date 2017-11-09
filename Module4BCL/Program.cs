@@ -48,15 +48,16 @@ namespace Module4BCL
                 {
                     ruleFound = true;
                     Console.WriteLine($"{strings.RuleFound}{rule.Template}");
-                    StringBuilder newPath = new StringBuilder(e.FullPath.Replace(e.Name, $"{rule.Folder}\\"));
-                    new FileInfo(newPath.ToString()).Directory.Create();
                     var date = DateTime.Now;
-                    newPath.Append(fileNameWithoutExtension.ToString());
-                    newPath = rule.AddDate ? newPath.Append(date.ToString("m", strings.Culture.DateTimeFormat)) : newPath;
-                    newPath = rule.AddIndex ? newPath.Append($"_{count}") : newPath;
-                    newPath.Append(Path.GetExtension(e.Name));
-                    File.Move(e.FullPath, newPath.ToString());
-                    Console.WriteLine($"{strings.FileReplaced}{newPath}");
+                    StringBuilder newPath = new StringBuilder(Path.Combine(Path.GetDirectoryName(e.FullPath), rule.Folder));
+                    StringBuilder newFileName = fileNameWithoutExtension;
+                    newFileName = rule.AddDate ? newFileName.Append(date.ToString("m", strings.Culture.DateTimeFormat)) : newFileName;
+                    newFileName = rule.AddIndex ? newFileName.Append($"_{count}") : newFileName;
+                    newFileName.Append(Path.GetExtension(e.Name));
+                    var newPathStr = Path.Combine(newPath.ToString(), newFileName.ToString());
+                    new FileInfo(newPathStr).Directory.Create();
+                    File.Move(e.FullPath, newPathStr);
+                    Console.WriteLine($"{strings.FileReplaced}{newPathStr}");
                 }
             }
 
