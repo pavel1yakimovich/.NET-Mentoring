@@ -1,0 +1,8 @@
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\obj\Debug\MyIoC.csprojResolveAssemblyReference.cache
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\bin\Debug\MyIoC.dll
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\bin\Debug\MyIoC.pdb
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\obj\Debug\MyIoC.dll
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\obj\Debug\MyIoC.pdb
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\bin\Debug\Fasterflect.dll
+D:\Learning\.NET-Mentoring\Module5Reflection\MyIoC\bin\Debug\Fasterflect.xml

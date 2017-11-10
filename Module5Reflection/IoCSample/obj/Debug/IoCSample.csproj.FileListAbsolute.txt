@@ -1,0 +1,5 @@
+D:\Learning\.NET-Mentoring\Module5Reflection\IoCSample\bin\Debug\IoCSample.dll
+D:\Learning\.NET-Mentoring\Module5Reflection\IoCSample\bin\Debug\IoCSample.pdb
+D:\Learning\.NET-Mentoring\Module5Reflection\IoCSample\obj\Debug\IoCSample.csprojResolveAssemblyReference.cache
+D:\Learning\.NET-Mentoring\Module5Reflection\IoCSample\obj\Debug\IoCSample.dll
+D:\Learning\.NET-Mentoring\Module5Reflection\IoCSample\obj\Debug\IoCSample.pdb

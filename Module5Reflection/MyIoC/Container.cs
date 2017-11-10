@@ -1,24 +1,25 @@
-﻿using System;
+﻿using Fasterflect;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MyIoC
 {
+    [TestClass]
 	public class Container
 	{
         private Dictionary<Type, Type> container = new Dictionary<Type, Type>();
 
 		public void AddAssembly(Assembly assembly)
 		{
-            var exportTypes = assembly.GetTypes().Where(t => t.GetCustomAttribute<ExportAttribute>() != null)
-                .Select(t => new
-                {
-                    type = t,
-                    exportType = t.GetCustomAttribute<ExportAttribute>().Contract
-                });
+            var exportTypes = assembly.TypesWith<ExportAttribute>().Select(t => new
+            {
+                type = t,
+                exportType = t.Attribute<ExportAttribute>().Contract
+            });
+                
 
             foreach (var item in exportTypes)
             {
@@ -39,26 +40,47 @@ namespace MyIoC
 
 		public object CreateInstance(Type type)
 		{
-			return null;
-		}
+            if (type.GetCustomAttribute<ImportConstructorAttribute>() != null)
+            {
+                var ctor = type.Constructors().Single();
+                var parameters = ctor.Parameters();
+                var parametersObjects = new object[parameters.Count()];
 
-		public T CreateInstance<T>()
-		{
-            return default(T);
-		}
+                for (int i = 0; i < parameters.Count(); i++)
+                {
+                    parametersObjects[i] = container[parameters[i].ParameterType].CreateInstance();
+                }
+                return ctor.Invoke(parametersObjects);
+            }
+            else
+            {
+                var ctor = type.Constructor();
+                var properties = type.PropertiesWith(Flags.InstancePublic, typeof(ImportAttribute));
+                
+                var result = ctor.Invoke(null);
+                foreach(var prop in properties)
+                {
+                    result.SetPropertyValue(prop.Name, container[prop.PropertyType].CreateInstance());
+                }
 
+                return result;
+            }
+        }
 
+        public T CreateInstance<T>() => (T)this.CreateInstance(typeof(T));
+
+        [TestMethod]
 		public void Sample()
 		{
 			var container = new Container();
-			container.AddAssembly(Assembly.GetExecutingAssembly());
+            //container.AddAssembly(Assembly.GetExecutingAssembly());
 
-			var customerBLL = (CustomerBLL)container.CreateInstance(typeof(CustomerBLL));
-			var customerBLL2 = container.CreateInstance<CustomerBLL>();
+            //container.AddType(typeof(CustomerBLL));
+            container.AddType(typeof(Logger));
+            container.AddType(typeof(CustomerDAL), typeof(ICustomerDAL));
 
-			container.AddType(typeof(CustomerBLL));
-			container.AddType(typeof(Logger));
-			container.AddType(typeof(CustomerDAL), typeof(ICustomerDAL));
-		}
+            var customerBLL = (CustomerBLL)container.CreateInstance(typeof(CustomerBLL));
+            var customerBLL2 = container.CreateInstance<CustomerBLL2>();
+        }
 	}
 }
