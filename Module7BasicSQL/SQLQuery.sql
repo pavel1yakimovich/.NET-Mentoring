@@ -55,3 +55,8 @@ SELECT CustomerID, Country
 FROM Customers
 WHERE LEFT(Country, 1) LIKE '[b-g]%'
 ORDER BY Country
+
+--Task 1.4
+SELECT ProductName 
+FROM Products
+WHERE ProductName LIKE 'cho_olade'
