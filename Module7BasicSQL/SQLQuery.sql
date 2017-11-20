@@ -60,3 +60,7 @@ ORDER BY Country
 SELECT ProductName 
 FROM Products
 WHERE ProductName LIKE 'cho_olade'
+
+--Task 2.1.1
+SELECT SUM(Quantity*UnitPrice*(1 - Discount)) AS Totals
+FROM [Order Details]
