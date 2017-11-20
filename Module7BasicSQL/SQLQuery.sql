@@ -80,3 +80,9 @@ GROUP BY YEAR(OrderDate)
 
 SELECT COUNT(*)
 FROM Orders
+
+--Task 2.2.2
+SELECT COUNT(*) AS Amount, (SELECT FirstName + LastName FROM Employees WHERE o.EmployeeID = Employees.EmployeeID) AS Seller
+FROM Orders AS o
+GROUP BY o.EmployeeID
+ORDER BY COUNT(*) DESC
