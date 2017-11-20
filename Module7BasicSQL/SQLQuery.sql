@@ -49,3 +49,9 @@ SELECT CustomerID, Country
 FROM Customers
 WHERE LEFT(Country, 1) BETWEEN 'b' AND 'g'
 ORDER BY Country
+
+--Task 1.3.3
+SELECT CustomerID, Country
+FROM Customers
+WHERE LEFT(Country, 1) LIKE '[b-g]%'
+ORDER BY Country
