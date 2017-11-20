@@ -33,3 +33,8 @@ SELECT ContactName, Country
 FROM Customers
 WHERE Country NOT IN ('USA', 'Canada')
 ORDER BY ContactName
+
+--Task 1.2.3
+SELECT DISTINCT Country
+FROM Customers
+ORDER BY Country DESC
