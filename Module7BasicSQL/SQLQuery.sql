@@ -68,3 +68,7 @@ FROM [Order Details]
 --Task 2.1.2
 SELECT COUNT(*) - COUNT(ALL ShippedDate)
 FROM Orders
+
+--Task 2.1.3
+SELECT COUNT(DISTINCT CustomerID)
+FROM Orders
