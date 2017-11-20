@@ -43,3 +43,9 @@ ORDER BY Country DESC
 SELECT DISTINCT OrderID
 FROM [Order Details]
 WHERE Quantity BETWEEN 3 AND 10
+
+--Task 1.3.2
+SELECT CustomerID, Country
+FROM Customers
+WHERE LEFT(Country, 1) BETWEEN 'b' AND 'g'
+ORDER BY Country
