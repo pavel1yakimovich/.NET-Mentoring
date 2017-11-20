@@ -64,3 +64,7 @@ WHERE ProductName LIKE 'cho_olade'
 --Task 2.1.1
 SELECT SUM(Quantity*UnitPrice*(1 - Discount)) AS Totals
 FROM [Order Details]
+
+--Task 2.1.2
+SELECT COUNT(*) - COUNT(ALL ShippedDate)
+FROM Orders
