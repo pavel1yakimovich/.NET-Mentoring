@@ -86,3 +86,9 @@ SELECT COUNT(*) AS Amount, (SELECT FirstName + LastName FROM Employees WHERE o.E
 FROM Orders AS o
 GROUP BY o.EmployeeID
 ORDER BY COUNT(*) DESC
+
+--Task 2.2.3
+SELECT EmployeeID, CustomerID, COUNT(*) AS Count
+FROM Orders
+WHERE YEAR(OrderDate) = 1998
+GROUP BY EmployeeID, CustomerID
