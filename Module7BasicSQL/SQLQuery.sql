@@ -38,3 +38,8 @@ ORDER BY ContactName
 SELECT DISTINCT Country
 FROM Customers
 ORDER BY Country DESC
+
+--Task 1.3.1
+SELECT DISTINCT OrderID
+FROM [Order Details]
+WHERE Quantity BETWEEN 3 AND 10
