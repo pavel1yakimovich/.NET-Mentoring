@@ -72,3 +72,11 @@ FROM Orders
 --Task 2.1.3
 SELECT COUNT(DISTINCT CustomerID)
 FROM Orders
+
+--Task 2.2.1
+SELECT YEAR(OrderDate) AS 'Year', COUNT(*)
+FROM Orders
+GROUP BY YEAR(OrderDate)
+
+SELECT COUNT(*)
+FROM Orders
