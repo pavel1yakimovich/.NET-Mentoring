@@ -92,3 +92,7 @@ SELECT EmployeeID, CustomerID, COUNT(*) AS Count
 FROM Orders
 WHERE YEAR(OrderDate) = 1998
 GROUP BY EmployeeID, CustomerID
+
+--Task 2.2.6
+SELECT FirstName + LastName AS Employee, (SELECT FirstName + LastName FROM Employees AS e WHERE e.EmployeeID = empl.ReportsTo) AS Manager
+FROM Employees AS empl
