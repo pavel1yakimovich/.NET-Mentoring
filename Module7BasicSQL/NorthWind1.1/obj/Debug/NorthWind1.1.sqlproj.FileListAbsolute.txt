@@ -1,0 +1,9 @@
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\bin\Debug\NorthWind1.1.dacpac
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\bin\Debug\NorthWind1.1.dll
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\bin\Debug\NorthWind1.1.pdb
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\obj\Debug\Model.xml
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\obj\Debug\refactor.xml
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\obj\Debug\postdeploy.sql
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\obj\Debug\predeploy.sql
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\obj\Debug\NorthWind1.1.dll
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.1\obj\Debug\NorthWind1.1.pdb

@@ -1,0 +1,5 @@
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.3\bin\Debug\NorthWind1.3.dacpac
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.3\bin\Debug\NorthWind1.3.dll
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.3\bin\Debug\NorthWind1.3.pdb
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.3\obj\Debug\NorthWind1.3.dll
+D:\Learning\.NET-Mentoring\Module7BasicSQL\NorthWind1.3\obj\Debug\NorthWind1.3.pdb
