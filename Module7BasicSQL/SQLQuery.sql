@@ -110,3 +110,8 @@ SELECT Customers.CustomerID, COUNT(*) as Orders
 FROM Customers
 LEFT JOIN Orders ON Orders.CustomerID = Customers.CustomerID
 GROUP BY Customers.CustomerID
+
+--Task 2.4.1
+SELECT CompanyName
+FROM Suppliers
+WHERE SupplierID IN (SELECT SupplierID FROM Products WHERE UnitsInStock = 0)
