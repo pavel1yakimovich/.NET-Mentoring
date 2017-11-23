@@ -120,3 +120,8 @@ WHERE SupplierID IN (SELECT SupplierID FROM Products WHERE UnitsInStock = 0)
 SELECT EmployeeID
 FROM Employees
 WHERE 150 < (SELECT COUNT(*) FROM Orders WHERE Orders.EmployeeID = Employees.EmployeeID)
+
+--Task 2.4.3
+SELECT CustomerID
+FROM Customers
+WHERE NOT EXISTS(SELECT OrderID FROM Orders WHERE Orders.CustomerID = Customers.CustomerID)
