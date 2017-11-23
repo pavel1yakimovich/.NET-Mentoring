@@ -104,3 +104,9 @@ INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.Emp
 INNER JOIN Territories ON Territories.TerritoryID = EmployeeTerritories.TerritoryID
 INNER JOIN Region ON Region.RegionID = Territories.RegionID
 WHERE RegionDescription = 'Western'
+
+--Task 2.3.2
+SELECT Customers.CustomerID, COUNT(*) as Orders
+FROM Customers
+LEFT JOIN Orders ON Orders.CustomerID = Customers.CustomerID
+GROUP BY Customers.CustomerID
