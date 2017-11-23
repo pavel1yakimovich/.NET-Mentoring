@@ -96,3 +96,11 @@ GROUP BY EmployeeID, CustomerID
 --Task 2.2.6
 SELECT FirstName + LastName AS Employee, (SELECT FirstName + LastName FROM Employees AS e WHERE e.EmployeeID = empl.ReportsTo) AS Manager
 FROM Employees AS empl
+
+--Task 2.3.1
+SELECT DISTINCT Employees.EmployeeID
+FROM Employees
+INNER JOIN EmployeeTerritories ON Employees.EmployeeID = EmployeeTerritories.EmployeeID
+INNER JOIN Territories ON Territories.TerritoryID = EmployeeTerritories.TerritoryID
+INNER JOIN Region ON Region.RegionID = Territories.RegionID
+WHERE RegionDescription = 'Western'
