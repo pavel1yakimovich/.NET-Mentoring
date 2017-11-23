@@ -115,3 +115,8 @@ GROUP BY Customers.CustomerID
 SELECT CompanyName
 FROM Suppliers
 WHERE SupplierID IN (SELECT SupplierID FROM Products WHERE UnitsInStock = 0)
+
+--Task 2.4.2
+SELECT EmployeeID
+FROM Employees
+WHERE 150 < (SELECT COUNT(*) FROM Orders WHERE Orders.EmployeeID = Employees.EmployeeID)
