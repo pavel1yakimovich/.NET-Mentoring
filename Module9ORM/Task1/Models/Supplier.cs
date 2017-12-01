@@ -7,6 +7,7 @@ namespace Task1.Models
     {
         [PrimaryKey, Identity]
         public int SupplierID { get; set; }
+
         [Column(Name = "ContactName")]
         public string Name { get; set; }
     }

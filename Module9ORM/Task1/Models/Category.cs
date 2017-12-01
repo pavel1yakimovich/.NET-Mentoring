@@ -7,6 +7,7 @@ namespace Task1.Models
     {
         [PrimaryKey, Identity]
         public int CategoryID { get; set; }
+
         [Column(Name = "CategoryName")]
         public string Name { get; set; }
     }
