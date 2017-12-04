@@ -13,7 +13,7 @@ namespace Task1
         static void Main(string[] args)
         {
             #region task 2
-            Task3_3();
+            Task3_4();
             #endregion
 
             Console.ReadKey();
@@ -113,6 +113,17 @@ namespace Task1
 
                     db.Insert(product);
                 }
+            }
+        }
+
+        static void Task3_4()
+        {
+            using (var db = new DbNorthwind())
+            {
+                var orderDetails = db.OrderDetails.LoadWith(o => o.Order)
+                    .Where(od => db.Orders.Where(o => o.ShippedDate == null).Select(o => o.OrderId).Contains(od.OrderID) && od.ProductID == 42)
+                    .Set(od => od.ProductID, 81)
+                    .Update();
             }
         }
     }

@@ -50,6 +50,7 @@
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\EmployeeTerritories.cs" />
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Region.cs" />
     <Compile Include="Models\Shipper.cs" />

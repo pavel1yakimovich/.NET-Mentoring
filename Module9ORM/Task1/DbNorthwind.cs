@@ -17,5 +17,6 @@ namespace Task1
         public ITable<Region> Regions { get { return GetTable<Region>(); } }
         public ITable<Order> Orders { get { return GetTable<Order>(); } }
         public ITable<Shipper> Shippers { get { return GetTable<Shipper>(); } }
+        public ITable<OrderDetails> OrderDetails { get { return GetTable<OrderDetails>(); } }
     }
 }

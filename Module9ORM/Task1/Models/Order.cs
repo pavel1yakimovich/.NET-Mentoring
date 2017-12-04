@@ -22,5 +22,8 @@ namespace Task1.Models
         public int EmployeeID { get; set; }
         [Association(ThisKey = "EmployeeID", OtherKey = "EmployeeID")]
         public Employee Employee { get; set; }
+
+        [Column(Name = "ShippedDate")]
+        public DateTime? ShippedDate { get; set; }
     }
 }
