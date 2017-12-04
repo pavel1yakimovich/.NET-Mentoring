@@ -13,7 +13,7 @@ namespace Task1
         static void Main(string[] args)
         {
             #region task 2
-            Task3_2();
+            Task3_3();
             #endregion
 
             Console.ReadKey();
@@ -82,6 +82,37 @@ namespace Task1
             using (var db = new DbNorthwind())
             {
                 var product = db.Products.Where(p => p.ProductID == 2).Set(p => p.CategoryID, 1).Update();
+            }
+        }
+
+        static void Task3_3()
+        {
+            using (var db = new DbNorthwind())
+            {
+                var products = new List<Product>
+                {
+                    new Product { Name = "First", SupplierID = 1, CategoryID = 100 },
+                    new Product { Name = "Second", SupplierID = 100, CategoryID = 2 }
+                };
+
+                foreach (var product in products)
+                {
+                    if (!db.Suppliers.Where(s => s.SupplierID == product.SupplierID).Any())
+                    {
+                        var supplier = new Supplier { Name = "New company" };
+                        supplier.SupplierID = Convert.ToInt32(db.InsertWithIdentity(supplier));
+                        product.SupplierID = supplier.SupplierID;
+                    }
+
+                    if(!db.Categories.Where(c => c.CategoryID == product.CategoryID).Any())
+                    {
+                        var category = new Category { Name = "New category" };
+                        category.CategoryID = Convert.ToInt32(db.InsertWithIdentity(category));
+                        product.CategoryID = category.CategoryID;
+                    }
+
+                    db.Insert(product);
+                }
             }
         }
     }
