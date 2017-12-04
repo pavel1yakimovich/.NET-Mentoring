@@ -41,6 +41,20 @@ namespace Task1
                 {
                     Console.WriteLine($"Region: {item?.Region} Employees: {item?.Employees}");
                 }
+
+                var employees3 = db.Employees.Join(db.Orders, e => e.EmployeeID, o => o.EmployeeID, (e, o) => new { e, o })
+                    .Join(db.Shippers, o => o.o.ShipperID, s => s.ShipperID, (o, s) => new { o, s })
+                    .GroupBy(s => s.o.e.EmployeeID, s => s.s.CompanyName, (e, s) => new { Employee = e, Shippers = s.Distinct() });
+
+                foreach (var item in employees3)
+                {                     
+                    Console.Write($"Employee: {item.Employee} Shippers: ");
+                    foreach (var shipper in item.Shippers)
+                    {
+                        Console.Write($"{shipper}, ");
+                    }
+                    Console.WriteLine();
+                }
             }
             #endregion
 

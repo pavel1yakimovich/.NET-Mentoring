@@ -13,8 +13,10 @@ namespace Task1.Models
         public string FirstName { get; set; }
         [Column(Name = "LastName")]
         public string LastName { get; set; }
-        
+
         [Association(ThisKey = "EmployeeID", OtherKey = "EmployeeID")]
         public IEnumerable<EmployeeTerritories> EmployeeTerritories { get; set; }
+        [Association(ThisKey = "EmployeeID", OtherKey = "EmployeeID")]
+        public IEnumerable<Order> Orders { get; set; }
     }
 }
