@@ -13,6 +13,14 @@ namespace Task1
         static void Main(string[] args)
         {
             #region task 2
+            Task3_2();
+            #endregion
+
+            Console.ReadKey();
+        }
+
+        static void Task2()
+        {
             using (var db = new DbNorthwind())
             {
                 var ed = db.MappingSchema.GetEntityDescriptor(typeof(Product));
@@ -26,12 +34,12 @@ namespace Task1
                 {
                     Console.WriteLine($"Product: {item.Name} Category: {item.Category.Name} Supplier: {item.Supplier.Name}");
                 }
-                
+
                 foreach (var item in employees)
                 {
-                        Console.WriteLine($"Employee: {item?.Id} Region: {item?.Region}");
+                    Console.WriteLine($"Employee: {item?.Id} Region: {item?.Region}");
                 }
-                
+
                 var employees2 = db.Employees.Join(db.EmployeeTerritories, e => e.EmployeeID, et => et.EmployeeID, (e, et) => new { e, et })
                     .Join(db.Territories, et => et.et.TerritoryID, t => t.TerritoryID, (et, t) => new { et, t })
                     .Join(db.Regions, t => t.t.RegionID, r => r.RegionID, (t, r) => new { t, r })
@@ -47,7 +55,7 @@ namespace Task1
                     .GroupBy(s => s.o.e.EmployeeID, s => s.s.CompanyName, (e, s) => new { Employee = e, Shippers = s.Distinct() });
 
                 foreach (var item in employees3)
-                {                     
+                {
                     Console.Write($"Employee: {item.Employee} Shippers: ");
                     foreach (var shipper in item.Shippers)
                     {
@@ -56,9 +64,25 @@ namespace Task1
                     Console.WriteLine();
                 }
             }
-            #endregion
+        }
 
-            Console.ReadKey();
+        static void Task3_1()
+        {
+            var employee = new Employee() { FirstName = "Pasha", LastName = "Yakimovich" };
+            using (var db = new DbNorthwind())
+            {
+                employee.EmployeeID = Convert.ToInt32(db.InsertWithIdentity(employee));
+
+                db.EmployeeTerritories.Insert(() => new EmployeeTerritories() { EmployeeID = employee.EmployeeID, TerritoryID = 19713 });
+            }
+        }
+
+        static void Task3_2()
+        {
+            using (var db = new DbNorthwind())
+            {
+                var product = db.Products.Where(p => p.ProductID == 2).Set(p => p.CategoryID, 1).Update();
+            }
         }
     }
 }
