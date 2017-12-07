@@ -1,0 +1,13 @@
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\Task2.exe.config
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\Task2.exe
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\Task2.pdb
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\EntityFramework.dll
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\EntityFramework.SqlServer.dll
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\EntityFramework.xml
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\EntityFramework.SqlServer.xml
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\obj\Debug\Task2.exe
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\obj\Debug\Task2.pdb
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\DB\northwnd.ldf
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\DB\northwnd.mdf
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\northwnd.mdf
+D:\Learning\.NET-Mentoring\Module9ORM\Task2\bin\Debug\northwnd_log.ldf

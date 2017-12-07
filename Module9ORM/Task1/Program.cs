@@ -13,7 +13,7 @@ namespace Task1
         static void Main(string[] args)
         {
             #region task 2
-            Task3_4();
+            Task2();
             #endregion
 
             Console.ReadKey();
