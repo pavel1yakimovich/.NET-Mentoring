@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201712080941257_Version_2.Designer.cs">
       <DependentUpon>201712080941257_Version_2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712080946083_Version_3.cs" />
+    <Compile Include="Migrations\201712080946083_Version_3.Designer.cs">
+      <DependentUpon>201712080946083_Version_3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ORM\Category.cs" />
     <Compile Include="ORM\CreditCard.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712080941257_Version_2.resx">
       <DependentUpon>201712080941257_Version_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712080946083_Version_3.resx">
+      <DependentUpon>201712080946083_Version_3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -49,6 +49,8 @@ namespace EntityFrameworkTask.ORM
         [StringLength(24)]
         public string Fax { get; set; }
 
+        public DateTime FoundationDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
 
