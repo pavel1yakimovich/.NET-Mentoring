@@ -4,9 +4,14 @@ namespace EntityFrameworkTask.ORM
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using EntityFrameworkTask.Migrations;
 
     public partial class Northwind : DbContext
     {
+        static Northwind()
+        {
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<Northwind, Configuration>());
+        }
         public Northwind()
             : base("name=Northwind")
         {

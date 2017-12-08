@@ -21,6 +21,7 @@ namespace EntityFrameworkTask.ORM
         [StringLength(50)]
         public string TerritoryDescription { get; set; }
 
+        [ForeignKey("Region")]
         public int RegionID { get; set; }
 
         public virtual Region Region { get; set; }
