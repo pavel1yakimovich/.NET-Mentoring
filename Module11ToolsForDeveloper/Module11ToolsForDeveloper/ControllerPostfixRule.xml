@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SourceAnalyzer Name="Custom Rules">
+  <Description>
+    Custom rules
+  </Description>
+  <Rules>
+    <Rule Name="ControllerPostfixRule" CheckId="EP1111">
+      <Context>Controller class must end to '...Controller'</Context>
+      <Description>Controller class must end to '...Controller'</Description>
+    </Rule>
+  </Rules>
+</SourceAnalyzer>
